@@ -1,23 +1,33 @@
 package com.youngdeok.aws_cognito_login_ex01;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.databinding.DataBindingUtil;
 
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.TextView;
 
-public class MainActivity extends AppCompatActivity implements View.OnClickListener {
+import com.youngdeok.aws_cognito_login_ex01.api.AWSLoginModel;
+import com.youngdeok.aws_cognito_login_ex01.databinding.ActivityMainBinding;
+
+public class MainActivity extends AppCompatActivity {
+
+    // {XmlName}Binding - Pascal Expression
+    ActivityMainBinding binding;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        //setContentView(R.layout.activity_main);
+        binding = DataBindingUtil.setContentView(this, R.layout.activity_main);
+        binding.setMain(this);  // because the <data>'s <variable> name is 'main' set{Name}
 
-        findViewById(R.id.btn_logout).setOnClickListener(this);
+        // binding.{resourceId}.{member}
+        //binding.btnLogout.setOnClickListener(this);
     }
 
-    @Override
-    public void onClick(View view) {
+    public void onClickListener(View view) {
         switch (view.getId()) {
             case R.id.btn_logout:
                 logoutAction();
@@ -26,7 +36,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     }
 
     private void logoutAction() {
-        // TODO Logout Action
+        AWSLoginModel.doUserLogout();
         startActivity(new Intent(MainActivity.this, LoginActivity.class)
         .setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK));
     }
@@ -35,8 +45,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     protected void onResume() {
         super.onResume();
 
-        // TODO get Username from Model
-
+        String user = AWSLoginModel.getSavedUserName(MainActivity.this);
+        TextView username = findViewById(R.id.tv_username);
+        username.setText(user);
 
     }
 }
