@@ -17,4 +17,6 @@
     <string name="confirm">Confirm</string>
     <string name="resend_code">Resend Code</string>
     <string name="register_title">Register</string>
+    <string name="register">Register</string>
+    <string name="email">Email</string>
 </resources>

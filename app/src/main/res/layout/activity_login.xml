@@ -1,8 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    tools:context=".LoginActivity">
+<layout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools">
 
     <data>
         <variable
@@ -21,7 +20,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:visibility="gone"
-        tools:layout_margin="20dp">
+        android:layout_margin="20dp">
 
         <TableRow
             android:layout_width="match_parent"
@@ -65,7 +64,7 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/username" />
+                android:text="@string/email" />
 
             <EditText
                 android:id="@+id/edt_register_email"
@@ -111,7 +110,7 @@
                 android:layout_marginStart="10dp"
                 android:onClick="@{login::onClickListener}"
                 android:layout_weight="1"
-                android:text="@string/reset_password" />
+                android:text="@string/register" />
         </TableRow>
 
         <TableRow
@@ -124,7 +123,8 @@
         android:id="@+id/loginContainer"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        tools:layout_margin="20dp">
+        android:layout_marginStart="20dp"
+        android:layout_marginEnd="20dp">
 
         <TableRow
             android:layout_width="match_parent"
@@ -156,8 +156,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="10dp"
                 android:layout_weight="1"
-                android:ems="10"
-                android:inputType="textPersonName"
+                android:inputType="text"
                 android:lines="1"
                 tools:text="UserName" />
         </TableRow>
@@ -216,7 +215,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:visibility="gone"
-        tools:layout_margin="20dp">
+        android:layout_margin="20dp">
 
         <TableRow
             android:layout_width="match_parent"
@@ -301,7 +300,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:visibility="gone"
-        tools:layout_margin="20dp">
+        android:layout_margin="20dp">
 
         <TableRow
             android:layout_width="match_parent"

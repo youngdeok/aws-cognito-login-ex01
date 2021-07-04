@@ -1,12 +1,12 @@
 package com.youngdeok.aws_cognito_login_ex01;
 
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.databinding.DataBindingUtil;
-
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.TextView;
+
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.databinding.DataBindingUtil;
 
 import com.youngdeok.aws_cognito_login_ex01.api.AWSLoginModel;
 import com.youngdeok.aws_cognito_login_ex01.databinding.ActivityMainBinding;
@@ -14,7 +14,7 @@ import com.youngdeok.aws_cognito_login_ex01.databinding.ActivityMainBinding;
 public class MainActivity extends AppCompatActivity {
 
     // {XmlName}Binding - Pascal Expression
-    ActivityMainBinding binding;
+    private ActivityMainBinding binding;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -22,9 +22,6 @@ public class MainActivity extends AppCompatActivity {
         //setContentView(R.layout.activity_main);
         binding = DataBindingUtil.setContentView(this, R.layout.activity_main);
         binding.setMain(this);  // because the <data>'s <variable> name is 'main' set{Name}
-
-        // binding.{resourceId}.{member}
-        //binding.btnLogout.setOnClickListener(this);
     }
 
     public void onClickListener(View view) {

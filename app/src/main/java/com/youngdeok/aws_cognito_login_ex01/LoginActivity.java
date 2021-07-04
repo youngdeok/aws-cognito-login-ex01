@@ -1,12 +1,12 @@
 package com.youngdeok.aws_cognito_login_ex01;
 
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.databinding.DataBindingUtil;
-
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Toast;
+
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.databinding.DataBindingUtil;
 
 import com.youngdeok.aws_cognito_login_ex01.api.AWSLoginHandler;
 import com.youngdeok.aws_cognito_login_ex01.api.AWSLoginModel;
@@ -15,12 +15,13 @@ import com.youngdeok.aws_cognito_login_ex01.databinding.ActivityLoginBinding;
 public class LoginActivity extends AppCompatActivity implements AWSLoginHandler {
 
     AWSLoginModel awsLoginModel;
-    ActivityLoginBinding binding;
+    private ActivityLoginBinding binding;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        binding = DataBindingUtil.setContentView(this, R.layout.activity_login);
+        awsLoginModel = new AWSLoginModel(this, this);
+        binding = DataBindingUtil.setContentView(LoginActivity.this, R.layout.activity_login);
         binding.setLogin(this);
     }
 
@@ -57,7 +58,7 @@ public class LoginActivity extends AppCompatActivity implements AWSLoginHandler 
     private void registerAction() {
         // do register and handles on interface
         awsLoginModel.registerUser(
-                binding.edtUsername.getText().toString(),
+                binding.edtRegisterUsername.getText().toString(),
                 binding.edtRegisterEmail.getText().toString(),
                 binding.edtRegisterPassword.getText().toString());
     }
@@ -116,7 +117,7 @@ public class LoginActivity extends AppCompatActivity implements AWSLoginHandler 
             showConfirm(false);
             showForgotAction(false);
             binding.registerContainer.setVisibility(View.VISIBLE);
-            binding.btnShowSignup.setVisibility(View.VISIBLE);
+            binding.btnShowSignup.setVisibility(View.GONE);
             binding.btnShowSignin.setVisibility(View.VISIBLE);
         } else {
             binding.registerContainer.setVisibility(View.GONE);
@@ -149,7 +150,7 @@ public class LoginActivity extends AppCompatActivity implements AWSLoginHandler 
             binding.btnShowSignup.setVisibility(View.GONE);
             binding.btnShowSignin.setVisibility(View.VISIBLE);
         } else {
-            binding.forgotContainer.setVisibility(View.VISIBLE);
+            binding.forgotContainer.setVisibility(View.GONE);
             binding.edtResetCode.setText("");
             binding.edtNewPassword.setText("");
         }
