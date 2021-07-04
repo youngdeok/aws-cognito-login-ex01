@@ -1,18 +1,25 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    tools:context=".LoginActivity">
+
+    <data>
+        <variable
+            name="login"
+            type="com.youngdeok.aws_cognito_login_ex01.LoginActivity" />
+    </data>
+
+<LinearLayout
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
-    tools:context=".LoginActivity">
+    android:orientation="vertical">
 
 
     <TableLayout
         android:id="@+id/registerContainer"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-
         android:visibility="gone"
         tools:layout_margin="20dp">
 
@@ -98,10 +105,11 @@
             android:layout_height="match_parent">
 
             <Button
-                android:id="@+id/btn_reset_password"
+                android:id="@+id/btn_register_user"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="10dp"
+                android:onClick="@{login::onClickListener}"
                 android:layout_weight="1"
                 android:text="@string/reset_password" />
         </TableRow>
@@ -184,12 +192,14 @@
                 android:id="@+id/btn_forgot"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:onClick="@{login::onClickListener}"
                 android:text="@string/forgot" />
 
             <Button
                 android:id="@+id/btn_login"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:onClick="@{login::onClickListener}"
                 android:layout_marginStart="10dp"
                 android:layout_weight="1"
                 android:text="@string/login" />
@@ -274,6 +284,7 @@
                 android:id="@+id/btn_reset_password"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:onClick="@{login::onClickListener}"
                 android:layout_marginStart="10dp"
                 android:layout_weight="1"
                 android:text="@string/reset_password" />
@@ -326,6 +337,7 @@
                 android:id="@+id/btn_confirm"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:onClick="@{login::onClickListener}"
                 android:layout_marginStart="10dp"
                 android:text="@string/confirm" />
 
@@ -340,6 +352,7 @@
                 android:id="@+id/btn_resend_code"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:onClick="@{login::onClickListener}"
                 android:layout_marginStart="10dp"
                 android:layout_weight="1"
                 android:text="@string/resend_code" />
@@ -352,17 +365,20 @@
     </TableLayout>
 
     <Button
-        android:id="@+id/btn_signup"
+        android:id="@+id/btn_show_signup"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:onClick="@{login::onClickListener}"
         android:layout_margin="20dp"
         android:text="@string/signup" />
 
     <Button
-        android:id="@+id/btn_signin"
+        android:id="@+id/btn_show_signin"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:onClick="@{login::onClickListener}"
         android:layout_margin="20dp"
         android:visibility="gone"
         android:text="@string/signin" />
 </LinearLayout>
+</layout>
